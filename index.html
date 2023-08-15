@@ -128,8 +128,8 @@
         input[type="text"] {
             border: none;
             background-color: #f4f4f4;
-            border-bottom: 1px solid black; /* Add a bottom border for a subtle separation */
-            outline: none; /* Remove outline when focused */
+            border-bottom: 1px solid black;
+            outline: none;
             width: 300px;
             height:30px
         }
@@ -180,6 +180,7 @@
     </style>
 </head>
 <body>
+    
     <header>
         <div class="bigspace"></div>
         <h1>Wech Ring</h1>
@@ -194,6 +195,13 @@
         <div class="space"></div>
         <a href="http://wechring.github.io/contact-me" class="links">CONTACT-ME</a>
     </header>
+
+    <script>
+    if (window.innerWidth < 768) { 
+      var viewport = document.querySelector("meta[name=viewport]");
+      viewport.setAttribute("content", "width=device-width, initial-scale=0.8");
+    }
+  </script>
 
     <div style = "position:absolute; left:30px; top:-100px; margin-left: 30px;">
         <img src="imgs/IMG_3615.jpeg" alt="Profile Picture" width="245px" height="600px">
