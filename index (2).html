@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wech Ring • Main</title>
+    <link rel="icon" type="image/jpeg" href="imgs/Logo.jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #0a0a0f;
+            color: #e8e6e0;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* ── Header ── */
+        header {
+            padding: 1.5rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 0.5px solid rgba(255,255,255,0.08);
+            position: sticky;
+            top: 0;
+            background: rgba(10,10,15,0.85);
+            backdrop-filter: blur(12px);
+            z-index: 10;
+        }
+
+        .logo-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.02em;
+            color: #e8e6e0;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul a {
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(232,230,224,0.5);
+            transition: color 0.2s;
+        }
+
+        nav ul a:hover,
+        nav ul a.active {
+            color: #e8e6e0;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 68px);
+            align-items: center;
+        }
+
+        .hero-text-col {
+            padding: 4rem 3rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .eyebrow {
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #c9a96e;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
+            line-height: 1.05;
+            margin-bottom: 0.5rem;
+            color: #f0ede6;
+        }
+
+        .hero-name em {
+            font-style: italic;
+            color: #c9a96e;
+        }
+
+        .divider {
+            width: 2.5rem;
+            height: 1px;
+            background: #c9a96e;
+            margin: 1.5rem 0 1.5rem;
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(232,230,224,0.55);
+            max-width: 380px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #c9a96e;
+            color: #0a0a0f;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .btn-primary:hover {
+            background: #e0bf83;
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border: 0.5px solid rgba(232,230,224,0.2);
+            color: rgba(232,230,224,0.6);
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: 400;
+            transition: border-color 0.2s, color 0.2s, transform 0.15s;
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(232,230,224,0.5);
+            color: #e8e6e0;
+            transform: translateY(-1px);
+        }
+
+        /* ── Hero Image Column ── */
+        .hero-img-col {
+            position: relative;
+            height: calc(100vh - 68px);
+            overflow: hidden;
+            background: #0f0f17;
+        }
+
+        .img-frame {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-img {
+            width: 75%;
+            max-width: 360px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+            border: 0.5px solid rgba(255,255,255,0.06);
+        }
+
+        .accent-line {
+            position: absolute;
+            top: 3rem;
+            right: 3rem;
+            width: 60px;
+            height: 0.5px;
+            background: #c9a96e;
+        }
+
+        .accent-dot {
+            position: absolute;
+            bottom: 3rem;
+            left: 3rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #c9a96e;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(232,230,224,0.25);
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(201,169,110,0.6), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.1); }
+        }
+
+        /* ── Stats Bar ── */
+        .stats-bar {
+            display: flex;
+            gap: 2.5rem;
+            padding: 1.5rem 4rem;
+            border-top: 0.5px solid rgba(255,255,255,0.06);
+            border-bottom: 0.5px solid rgba(255,255,255,0.06);
+            background: #0d0d13;
+        }
+
+        .stat { display: flex; flex-direction: column; gap: 0.25rem; }
+
+        .stat-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            color: #c9a96e;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(232,230,224,0.35);
+        }
+
+        /* ── Fade-in animations ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(18px);
+            animation: fadeUp 0.7s ease forwards;
+        }
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.25s; }
+        .fade-in:nth-child(3) { animation-delay: 0.4s; }
+        .fade-in:nth-child(4) { animation-delay: 0.55s; }
+        .fade-in:nth-child(5) { animation-delay: 0.7s; }
+        .fade-in:nth-child(6) { animation-delay: 0.85s; }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: none; }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            header { padding: 1.2rem 1.5rem; }
+            nav ul { gap: 1.2rem; }
+
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: unset;
+            }
+
+            .hero-img-col {
+                height: 60vw;
+                min-height: 280px;
+            }
+
+            .hero-text-col {
+                padding: 3rem 1.5rem;
+            }
+
+            .stats-bar {
+                padding: 1.2rem 1.5rem;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="http://wechring.github.io" class="logo-text">WR</a>
+    <nav>
+        <ul>
+            <li><a href="http://wechring.github.io" class="active">Home</a></li>
+            <li><a href="http://wechring.github.io/about-me">About</a></li>
+            <li><a href="http://wechring.github.io/roadmap">Roadmap</a></li>
+            <li><a href="http://wechring.github.io/projects">Projects</a></li>
+            <li><a href="http://wechring.github.io/contact-me">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text-col">
+        <p class="eyebrow fade-in">Software Engineer &amp; Web Developer</p>
+        <h1 class="hero-name fade-in">Wech<br><em>Ring</em></h1>
+        <div class="divider fade-in"></div>
+        <p class="tagline fade-in">Building thoughtful digital experiences — from clean architecture to polished interfaces.</p>
+        <div class="cta-row fade-in">
+            <a href="http://wechring.github.io/projects" class="btn-primary">View Projects</a>
+            <a href="http://wechring.github.io/contact-me" class="btn-ghost">Get in Touch</a>
+        </div>
+    </div>
+
+    <div class="hero-img-col">
+        <div class="img-frame">
+            <img src="imgs/Portfolio1.png" alt="Wech Ring" class="hero-img">
+        </div>
+        <div class="accent-line"></div>
+        <div class="accent-dot"></div>
+        <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </div>
+</section>
+
+<div class="stats-bar">
+    <div class="stat">
+        <span class="stat-num">3+</span>
+        <span class="stat-label">Years exp.</span>
+    </div>
+    <div class="stat">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Projects</span>
+    </div>
+    <div class="stat">
+        <span class="stat-num">Full</span>
+        <span class="stat-label">Stack</span>
+    </div>
+</div>
+
+</body>
+</html>
