@@ -1,65 +1,273 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <link href="'https://fonts.googleapis.com/css?family=Work+Sans">
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" context="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wech Ring • Main</title>
-    <link rel="icon" type="image/jpeg" href="imgs/Logo.jpeg">
 
-</head>
-<body>
-    
-<header>
-    <div class="container">
-        <img src="imgs/Wech.png" alt= "logo" class="logo">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
 
-            <nav>
-                <ul>
-                    <li><a href="http://wechring.github.io">HOME</a></li>
-                    <li><a href="http://wechring.github.io/about-me">ABOUT-ME</a></li>
-                    <li><a href="http://wechring.github.io/roadmap">ROADMAP</a></li>
-                    <li><a href="http://wechring.github.io/projects">PROJECTS</a></li>
-                    <li><a href="http://wechring.github.io/contact-me">CONTACT-ME</a></li>
-                </ul>
-            </nav>
+  .wr-root { font-family: 'DM Sans', sans-serif; background: #0a0a0f; color: #e8e6e0; min-height: 100vh; overflow-x: hidden; }
 
-    </div> 
-</header>
+  .wr-header {
+    padding: 1.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    position: sticky; top: 0;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    z-index: 10;
+  }
 
+  .wr-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+    color: #e8e6e0;
+    text-decoration: none;
+  }
 
+  .wr-nav { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+  .wr-nav a { text-decoration: none; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(232,230,224,0.5); transition: color 0.2s; }
+  .wr-nav a:hover, .wr-nav a.active { color: #e8e6e0; }
 
-<section class="hero">
-    <div class="container-grid">
+  .wr-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 68px);
+    align-items: center;
+  }
 
-        <div class="hero-img-col" >
-           <img src="imgs/Portfolio1.png" alt="Profile Picture" class="hero-img">
+  .wr-hero-text {
+    padding: 4rem 3rem 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .wr-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c9a96e;
+    margin: 0 0 1.5rem;
+  }
+
+  .wr-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    margin: 0 0 0.5rem;
+    color: #f0ede6;
+  }
+
+  .wr-name em {
+    font-style: italic;
+    color: #c9a96e;
+  }
+
+  .wr-role {
+    font-size: 1rem;
+    color: rgba(232,230,224,0.45);
+    margin: 1.5rem 0 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  .wr-divider {
+    width: 2.5rem;
+    height: 1px;
+    background: #c9a96e;
+    margin: 0 0 2rem;
+  }
+
+  .wr-tagline {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(232,230,224,0.55);
+    max-width: 380px;
+    margin: 0 0 3rem;
+  }
+
+  .wr-cta-row { display: flex; gap: 1rem; align-items: center; }
+
+  .wr-btn-primary {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: #c9a96e;
+    color: #0a0a0f;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .wr-btn-primary:hover { background: #e0bf83; transform: translateY(-1px); }
+
+  .wr-btn-ghost {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 0.5px solid rgba(232,230,224,0.2);
+    color: rgba(232,230,224,0.6);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 400;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    cursor: pointer;
+    background: transparent;
+  }
+  .wr-btn-ghost:hover { border-color: rgba(232,230,224,0.5); color: #e8e6e0; transform: translateY(-1px); }
+
+  .wr-hero-visual {
+    position: relative;
+    height: calc(100vh - 68px);
+    overflow: hidden;
+    background: #0f0f17;
+  }
+
+  .wr-img-frame {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wr-img-placeholder {
+    width: 75%;
+    max-width: 360px;
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, #1a1a24 0%, #14141d 100%);
+    border: 0.5px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(232,230,224,0.15);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  .wr-img-placeholder img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .wr-accent-line {
+    position: absolute;
+    top: 3rem; right: 3rem;
+    width: 60px; height: 0.5px;
+    background: #c9a96e;
+  }
+
+  .wr-accent-dot {
+    position: absolute;
+    bottom: 3rem; left: 3rem;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #c9a96e;
+  }
+
+  .wr-scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(232,230,224,0.25);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .wr-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(201,169,110,0.6), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  .wr-stats {
+    display: flex;
+    gap: 2.5rem;
+    padding: 1.5rem 4rem;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    background: #0d0d13;
+  }
+
+  .wr-stat { display: flex; flex-direction: column; gap: 0.25rem; }
+  .wr-stat-num { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: #c9a96e; }
+  .wr-stat-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(232,230,224,0.35); }
+
+  .wr-fade-in { opacity: 0; transform: translateY(18px); animation: fadeUp 0.7s ease forwards; }
+  .wr-fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .wr-fade-in:nth-child(2) { animation-delay: 0.25s; }
+  .wr-fade-in:nth-child(3) { animation-delay: 0.4s; }
+  .wr-fade-in:nth-child(4) { animation-delay: 0.55s; }
+  .wr-fade-in:nth-child(5) { animation-delay: 0.7s; }
+  .wr-fade-in:nth-child(6) { animation-delay: 0.85s; }
+
+  @keyframes fadeUp { to { opacity: 1; transform: none; } }
+</style>
+
+<div class="wr-root">
+  <header class="wr-header">
+    <a href="http://wechring.github.io" class="wr-logo">WR</a>
+    <nav>
+      <ul class="wr-nav">
+        <li><a href="http://wechring.github.io" class="active">Home</a></li>
+        <li><a href="http://wechring.github.io/about-me">About</a></li>
+        <li><a href="http://wechring.github.io/roadmap">Roadmap</a></li>
+        <li><a href="http://wechring.github.io/projects">Projects</a></li>
+        <li><a href="http://wechring.github.io/contact-me">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="wr-hero">
+    <div class="wr-hero-text">
+      <p class="wr-eyebrow wr-fade-in">Software Engineer & Web Developer</p>
+      <h1 class="wr-name wr-fade-in">Wech<br><em>Ring</em></h1>
+      <div class="wr-divider wr-fade-in"></div>
+      <p class="wr-tagline wr-fade-in">Building thoughtful digital experiences — from clean architecture to polished interfaces.</p>
+      <div class="wr-cta-row wr-fade-in">
+        <a href="http://wechring.github.io/projects" class="wr-btn-primary">View Projects</a>
+        <a href="http://wechring.github.io/contact-me" class="wr-btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="wr-hero-visual">
+      <div class="wr-img-frame">
+        <div class="wr-img-placeholder">
+          <img src="imgs/Portfolio1.png" alt="Wech Ring" onerror="this.style.display='none'; this.parentElement.innerHTML += '<span>Portfolio Photo</span>'">
         </div>
+      </div>
+      <div class="wr-accent-line"></div>
+      <div class="wr-accent-dot"></div>
+      <div class="wr-scroll-hint">
+        <div class="wr-scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </div>
+  </section>
 
-        <div class="hero-text-col">
+  <div class="wr-stats">
+    <div class="wr-stat"><span class="wr-stat-num">3+</span><span class="wr-stat-label">Years exp.</span></div>
+    <div class="wr-stat"><span class="wr-stat-num">10+</span><span class="wr-stat-label">Projects</span></div>
+    <div class="wr-stat"><span class="wr-stat-num">Full</span><span class="wr-stat-label">Stack</span></div>
+  </div>
+</div>
 
-            <div class="name">
-                <p>Wech Ring</p>
-            </div>
-
-            <p class="occupation">
-                Software Enginner
-            </p>
-
-            <p class="description">
-                Web Developer
-            </p>
-
-        </div>
-
-    </div>    
-
-</section>
-
-
-
-
-</body>
-</html>
