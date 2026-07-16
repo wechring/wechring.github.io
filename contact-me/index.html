@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wech Ring • Contact</title>
+    <link rel="icon" type="image/jpeg" href="/imgs/Logo.jpeg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <style>
+        .contact {
+            min-height: calc(100vh - var(--header-h));
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+
+        .contact-info {
+            padding: 4rem 3rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+            line-height: 1.1;
+            color: var(--paper-bright);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .contact-copy {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: rgba(232, 230, 224, 0.55);
+            max-width: 380px;
+            margin-bottom: 2.5rem;
+        }
+
+        .direct-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(232, 230, 224, 0.35);
+            margin-bottom: 0.4rem;
+        }
+
+        .direct-email {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            color: var(--paper);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(201, 169, 110, 0.4);
+            padding-bottom: 2px;
+            transition: color 0.2s, border-color 0.2s;
+            align-self: flex-start;
+            margin-bottom: 2.5rem;
+        }
+
+        .direct-email:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0.5px solid rgba(232, 230, 224, 0.2);
+            transition: border-color 0.2s, transform 0.15s;
+        }
+
+        .social-link:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .social-link img {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+
+        .contact-form-col {
+            position: relative;
+            background: var(--ink-3);
+            min-height: calc(100vh - var(--header-h));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 3rem;
+        }
+
+        .form-card {
+            width: 100%;
+            max-width: 440px;
+            position: relative;
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            inset: -14px;
+            border: 0.5px solid rgba(201, 169, 110, 0.35);
+            pointer-events: none;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.6rem;
+        }
+
+        .field label {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(232, 230, 224, 0.4);
+            margin-bottom: 0.5rem;
+        }
+
+        .field input,
+        .field textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 0.5px solid rgba(232, 230, 224, 0.25);
+            padding: 0.6rem 0.1rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--paper);
+            transition: border-color 0.2s;
+            border-radius: 0;
+        }
+
+        .field textarea {
+            resize: vertical;
+            min-height: 110px;
+            line-height: 1.7;
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: rgba(232, 230, 224, 0.25);
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            outline: none;
+            border-bottom-color: var(--gold);
+        }
+
+        .field input:focus-visible,
+        .field textarea:focus-visible {
+            outline: 1px solid rgba(201, 169, 110, 0.4);
+            outline-offset: 4px;
+        }
+
+        .form-card .btn-primary {
+            margin-top: 0.5rem;
+        }
+
+        .form-note {
+            margin-top: 1.2rem;
+            font-size: 0.72rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: rgba(232, 230, 224, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .contact-form-col {
+                min-height: unset;
+                padding: 3rem 1.5rem 4rem;
+            }
+
+            .accent-dot {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo-text">WR</a>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about-me">About</a></li>
+                <li><a href="/roadmap">Roadmap</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/contact-me" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact">
+        <div class="contact-info">
+            <p class="eyebrow fade-in">Contact</p>
+            <h1 class="contact-title fade-in">Let's <em>talk</em></h1>
+            <div class="divider fade-in"></div>
+            <p class="contact-copy fade-in">Have a project in mind, a question, or just want to say hello? My inbox is
+                always open.</p>
+
+            <div class="fade-in">
+                <p class="direct-label">Email</p>
+                <a href="mailto:wechring12@gmail.com" class="direct-email">wechring12@gmail.com</a>
+            </div>
+
+            <div class="socials fade-in">
+                <a href="https://github.com/wechring" class="social-link" aria-label="GitHub">
+                    <img src="/imgs/github.png" alt="GitHub">
+                </a>
+                <a href="mailto:wechring12@gmail.com" class="social-link" aria-label="Email">
+                    <img src="/imgs/mail.png" alt="E-Mail">
+                </a>
+                <a href="https://www.linkedin.com/in/wech-ring-597637254/" class="social-link" aria-label="LinkedIn">
+                    <img src="/imgs/linkedin.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+
+        <div class="contact-form-col">
+            <form class="form-card" id="contactForm">
+                <div class="field">
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" name="name" placeholder="Jane Doe" autocomplete="name" required>
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email"
+                        required>
+                </div>
+                <div class="field">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="What would you like to build?"
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Send message</button>
+                <p class="form-note">Sending opens your email app with the message pre-filled — nothing is stored on
+                    this site.</p>
+            </form>
+
+            <div class="accent-line"></div>
+            <div class="accent-dot"></div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var message = document.getElementById('message').value.trim();
+
+            var subject = encodeURIComponent('Portfolio contact from ' + name);
+            var body = encodeURIComponent(
+                message + '\n\n— ' + name + '\n' + email
+            );
+
+            window.location.href = 'mailto:wechring12@gmail.com?subject=' + subject + '&body=' + body;
+        });
+    </script>
+
+</body>
+
+</html>

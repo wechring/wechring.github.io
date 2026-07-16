@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wech Ring • About</title>
+    <link rel="icon" type="image/jpeg" href="/imgs/Logo.jpeg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        .about-hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            min-height: calc(100vh - var(--header-h));
+            align-items: center;
+        }
+
+        .about-text {
+            padding: 4rem 3rem 4rem 4rem;
+        }
+
+        .about-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            line-height: 1.1;
+            color: var(--paper-bright);
+        }
+
+        .about-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .bio p {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            font-weight: 300;
+            color: rgba(232, 230, 224, 0.6);
+            max-width: 560px;
+            margin-bottom: 1.4rem;
+        }
+
+        .bio strong {
+            font-weight: 500;
+            color: rgba(232, 230, 224, 0.85);
+        }
+
+        .facts-col {
+            position: relative;
+            background: var(--ink-3);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 3rem;
+        }
+
+        .facts-card {
+            position: relative;
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .facts-card::before {
+            content: '';
+            position: absolute;
+            inset: -14px;
+            border: 0.5px solid rgba(201, 169, 110, 0.35);
+            pointer-events: none;
+        }
+
+        .fact {
+            padding: 1.1rem 0;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .fact:last-child {
+            border-bottom: none;
+        }
+
+        .fact-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(232, 230, 224, 0.35);
+            margin-bottom: 0.35rem;
+        }
+
+        .fact-value {
+            font-size: 0.92rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: rgba(232, 230, 224, 0.8);
+        }
+
+        .section {
+            padding: 5rem 4rem;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .section-head {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            color: var(--paper-bright);
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .xp-item {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 2.5rem;
+            padding: 2rem 0 2rem 1.8rem;
+            position: relative;
+            border-left: 0.5px solid rgba(201, 169, 110, 0.3);
+        }
+
+        .xp-item::before {
+            content: '';
+            position: absolute;
+            left: -4.5px;
+            top: 2.7rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--ink);
+            border: 1px solid var(--gold);
+        }
+
+        .xp-item:first-of-type::before {
+            background: var(--gold);
+        }
+
+        .xp-when {
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(232, 230, 224, 0.35);
+            padding-top: 0.3rem;
+        }
+
+        .xp-role {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            color: var(--paper-bright);
+            margin-bottom: 0.2rem;
+        }
+
+        .xp-org {
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .xp-desc {
+            font-size: 0.92rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: rgba(232, 230, 224, 0.55);
+            max-width: 640px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skill-group-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-size: 0.78rem;
+            font-weight: 300;
+            color: rgba(232, 230, 224, 0.65);
+            border: 0.5px solid rgba(232, 230, 224, 0.15);
+            padding: 0.35rem 0.8rem;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .tag:hover {
+            border-color: rgba(201, 169, 110, 0.5);
+            color: var(--paper);
+        }
+
+        .closing {
+            padding: 5rem 4rem 6rem;
+            text-align: center;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .closing-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            color: var(--paper-bright);
+            margin-bottom: 1rem;
+        }
+
+        .closing-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .closing p {
+            font-size: 0.92rem;
+            font-weight: 300;
+            color: rgba(232, 230, 224, 0.5);
+            margin-bottom: 2.2rem;
+        }
+
+        .closing .btn-ghost {
+            margin-left: 0.8rem;
+        }
+
+        @media (max-width: 900px) {
+            .about-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .facts-col {
+                min-height: unset;
+                padding: 3rem 1.5rem 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-text {
+                padding: 3rem 1.5rem;
+            }
+
+            .section {
+                padding: 3.5rem 1.5rem;
+            }
+
+            .closing {
+                padding: 3.5rem 1.5rem 4.5rem;
+            }
+
+            .xp-item {
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+                padding-left: 1.4rem;
+            }
+
+            .accent-dot {
+                display: none;
+            }
+
+            .closing .btn-ghost {
+                margin-left: 0;
+                margin-top: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo-text">WR</a>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about-me" class="active">About</a></li>
+                <li><a href="/roadmap">Roadmap</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/contact-me">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about-hero">
+        <div class="about-text">
+            <p class="eyebrow fade-in">About</p>
+            <h1 class="about-title fade-in">Where code meets <em>behavior</em></h1>
+            <div class="divider fade-in"></div>
+            <div class="bio fade-in">
+                <p>I'm Wech Ring, a software engineer in Baltimore with an unusual pairing of degrees from <strong>Johns
+                        Hopkins University</strong>: Computer Science and Behavioral Biology. That combination isn't an
+                    accident — I'm most at home building software that helps us understand people.</p>
+                <p>As a <strong>Research Software Engineer at Johns Hopkins</strong>, I built and shipped a Python web
+                    platform that runs multi-condition online experiments end to end — randomization, real-time data
+                    validation, and messaging — and scaled it to over <strong>1,000 study participants</strong>. Before
+                    that, I spent a summer at <strong>Yale's Interactive Machines Group</strong> engineering systems
+                    that modulated AI agent behavior in real time for studies on human trust in machines.</p>
+                <p>Outside research, I build for the web: a startup collaboration platform in Next.js and Firebase, an
+                    interactive timeline spanning 400+ years of historical data, and an AI-powered trading assistant. As
+                    an <strong>executive board member of the National Society of Black Engineers</strong>, I organize
+                    workshops and events that expand representation of Black engineers in technology.</p>
+                <p>I care about clean architecture, interfaces that respect the people using them, and data you can
+                    trust. Currently focused on full-stack software engineering roles.</p>
+            </div>
+        </div>
+
+        <div class="facts-col">
+            <div class="facts-card fade-in">
+                <div class="fact">
+                    <p class="fact-label">Education</p>
+                    <p class="fact-value">B.S. Computer Science &amp; B.S. Behavioral Biology, Johns Hopkins University
+                    </p>
+                </div>
+                <div class="fact">
+                    <p class="fact-label">Based in</p>
+                    <p class="fact-value">Baltimore, Maryland</p>
+                </div>
+                <div class="fact">
+                    <p class="fact-label">Focus</p>
+                    <p class="fact-value">Full-stack development &amp; AI systems</p>
+                </div>
+                <div class="fact">
+                    <p class="fact-label">Currently</p>
+                    <p class="fact-value">Research Software Engineer, Johns Hopkins University</p>
+                </div>
+            </div>
+            <div class="accent-line"></div>
+            <div class="accent-dot"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-head">
+            <p class="eyebrow">Experience</p>
+            <h2 class="section-title">The road <em>so far</em></h2>
+        </div>
+
+        <div class="xp-item">
+            <p class="xp-when">Aug 2025 — Present</p>
+            <div>
+                <h3 class="xp-role">Research Software Engineer</h3>
+                <p class="xp-org">Johns Hopkins University</p>
+                <p class="xp-desc">Built and shipped a Python (oTree) platform running multi-condition online
+                    experiments end to end — randomization engine, real-time validation, and messaging — scaled to
+                    1,000+ participants, with automated checks catching incomplete submissions before they reach the
+                    dataset.</p>
+            </div>
+        </div>
+
+        <div class="xp-item">
+            <p class="xp-when">Dec 2023 — Oct 2025</p>
+            <div>
+                <h3 class="xp-role">Software Developer, Research Applications</h3>
+                <p class="xp-org">R-RIGHTS · Johns Hopkins University</p>
+                <p class="xp-desc">Designed the frontend architecture and data models for an interactive timeline
+                    spanning 400+ years of historical data, and built a reproducible R analysis pipeline for an
+                    NSF-funded STEM equity study that shaped student retention recommendations.</p>
+            </div>
+        </div>
+
+        <div class="xp-item">
+            <p class="xp-when">May 2023 — Aug 2023</p>
+            <div>
+                <h3 class="xp-role">Software Engineer Intern, AI Systems Research</h3>
+                <p class="xp-org">Interactive Machines Group · Yale University</p>
+                <p class="xp-desc">Engineered backend logic for an experimental game platform that modulated AI agent
+                    behavior in real time, and built a Django data collection platform with longitudinal participant
+                    tracking. Presented findings at the Leadership Alliance National Symposium.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-head">
+            <p class="eyebrow">Toolkit</p>
+            <h2 class="section-title">What I <em>work with</em></h2>
+        </div>
+
+        <div class="skills-grid">
+            <div>
+                <p class="skill-group-title">Languages</p>
+                <div class="skill-tags">
+                    <span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">Java</span><span
+                        class="tag">C</span><span class="tag">C++</span><span class="tag">SQL</span><span
+                        class="tag">HTML/CSS</span>
+                </div>
+            </div>
+            <div>
+                <p class="skill-group-title">Frameworks &amp; Tech</p>
+                <div class="skill-tags">
+                    <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Django</span><span
+                        class="tag">Firebase</span><span class="tag">REST APIs</span><span class="tag">oTree</span><span
+                        class="tag">SQLite</span><span class="tag">Git</span>
+                </div>
+            </div>
+            <div>
+                <p class="skill-group-title">Testing</p>
+                <div class="skill-tags">
+                    <span class="tag">JUnit</span><span class="tag">PyTest</span><span class="tag">Predicate
+                        Coverage</span><span class="tag">CACC</span><span class="tag">Pairwise Testing</span>
+                </div>
+            </div>
+            <div>
+                <p class="skill-group-title">Data &amp; Analysis</p>
+                <div class="skill-tags">
+                    <span class="tag">R</span><span class="tag">PyTorch</span><span class="tag">Statistical
+                        Analysis</span><span class="tag">Data Pipelines</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="closing">
+        <h2 class="closing-title">Let's build something <em>together</em></h2>
+        <p>Open to full-stack software engineering roles and interesting collaborations.</p>
+        <a href="/contact-me" class="btn-primary">Get in Touch</a>
+        <a href="/projects" class="btn-ghost">View Projects</a>
+    </section>
+
+</body>
+
+</html>

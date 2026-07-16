@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wech Ring • Roadmap</title>
+    <link rel="icon" type="image/jpeg" href="/imgs/Logo.jpeg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <style>
+        .hero {
+            min-height: calc(100vh - var(--header-h));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+            line-height: 1.1;
+            color: var(--paper-bright);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-copy {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: rgba(232, 230, 224, 0.55);
+            max-width: 420px;
+            margin-bottom: 3.5rem;
+        }
+
+        .path {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .milestone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.7rem;
+            position: relative;
+        }
+
+        .milestone-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            background: transparent;
+        }
+
+        .milestone.done .milestone-dot {
+            background: var(--gold);
+        }
+
+        .milestone.current .milestone-dot {
+            background: var(--gold);
+            box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.18);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.18);
+            }
+
+            50% {
+                box-shadow: 0 0 0 7px rgba(201, 169, 110, 0.08);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .milestone.current .milestone-dot {
+                animation: none;
+            }
+        }
+
+        .milestone-label {
+            position: absolute;
+            top: calc(100% + 0.4rem);
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(232, 230, 224, 0.35);
+            white-space: nowrap;
+        }
+
+        .milestone.current .milestone-label {
+            color: var(--gold);
+        }
+
+        .path-line {
+            width: clamp(40px, 9vw, 90px);
+            height: 1px;
+            background: rgba(201, 169, 110, 0.35);
+        }
+
+        .path-line.done {
+            background: var(--gold);
+        }
+
+        .hero .cta-row {
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1.5rem 5rem;
+            }
+
+            .cta-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo-text">WR</a>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about-me">About</a></li>
+                <li><a href="/roadmap" class="active">Roadmap</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/contact-me">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <p class="eyebrow fade-in">Roadmap</p>
+        <h1 class="hero-title fade-in">Charting <em>the path</em></h1>
+        <p class="hero-copy fade-in">This page is still taking shape. Soon it will map out where I've been, what I'm
+            building now, and where I'm headed next.</p>
+
+        <div class="path fade-in" aria-label="Progress: design done, build in progress, launch upcoming">
+            <div class="milestone done">
+                <span class="milestone-dot"></span>
+                <span class="milestone-label">Design</span>
+            </div>
+            <div class="path-line done"></div>
+            <div class="milestone current">
+                <span class="milestone-dot"></span>
+                <span class="milestone-label">Build</span>
+            </div>
+            <div class="path-line"></div>
+            <div class="milestone">
+                <span class="milestone-dot"></span>
+                <span class="milestone-label">Launch</span>
+            </div>
+        </div>
+
+        <div class="cta-row fade-in">
+            <a href="/projects" class="btn-primary">View Projects</a>
+            <a href="/" class="btn-ghost">Back Home</a>
+        </div>
+
+        <div class="accent-line"></div>
+        <div class="accent-dot"></div>
+    </section>
+
+</body>
+
+</html>

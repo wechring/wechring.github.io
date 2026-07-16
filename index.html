@@ -1,199 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Wech Ring • Main</title>
-    <link rel="icon" type="image/jpeg" href="imgs/Logo.jpeg">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/jpeg" href="/imgs/Logo.jpeg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html {
-            width: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: #0a0a0f;
-            color: #e8e6e0;
-            min-height: 100vh;
-            width: 100%;
-            overflow-x: hidden;
-        }
-
-        /* ── Header ── */
-        header {
-            padding: 1.5rem 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 0.5px solid rgba(255,255,255,0.08);
-            position: sticky;
-            top: 0;
-            background: rgba(10,10,15,0.85);
-            backdrop-filter: blur(12px);
-            z-index: 10;
-        }
-
-        .logo-text {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem;
-            letter-spacing: 0.02em;
-            color: #e8e6e0;
-            text-decoration: none;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        nav ul a {
-            text-decoration: none;
-            font-size: 0.78rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: rgba(232,230,224,0.5);
-            transition: color 0.2s;
-        }
-
-        nav ul a:hover,
-        nav ul a.active {
-            color: #e8e6e0;
-        }
-
-        /* ── Hero ── */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            min-height: calc(100vh - 68px);
-            align-items: center;
+            height: calc(100vh - var(--header-h));
+            align-items: stretch;
         }
 
         .hero-text-col {
-            padding: 4rem 3rem 4rem 4rem;
+            padding: 3rem 3rem 3rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .eyebrow {
-            font-size: 0.72rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #c9a96e;
-            margin-bottom: 1.5rem;
-        }
-
         .hero-name {
             font-family: 'DM Serif Display', serif;
-            font-size: clamp(3.5rem, 6vw, 5.5rem);
+            font-size: clamp(3rem, 5.5vw, 5rem);
             line-height: 1.05;
             margin-bottom: 0.5rem;
-            color: #f0ede6;
+            color: var(--paper-bright);
         }
 
         .hero-name em {
             font-style: italic;
-            color: #c9a96e;
-        }
-
-        .divider {
-            width: 2.5rem;
-            height: 1px;
-            background: #c9a96e;
-            margin: 1.5rem 0 1.5rem;
+            color: var(--gold);
         }
 
         .tagline {
             font-size: 0.95rem;
             line-height: 1.8;
-            color: rgba(232,230,224,0.55);
+            color: rgba(232, 230, 224, 0.55);
             max-width: 380px;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             font-weight: 300;
         }
 
-        .cta-row {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: #c9a96e;
-            color: #0a0a0f;
-            font-size: 0.78rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .btn-primary:hover {
-            background: #e0bf83;
-            transform: translateY(-1px);
-        }
-
-        .btn-ghost {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            border: 0.5px solid rgba(232,230,224,0.2);
-            color: rgba(232,230,224,0.6);
-            font-size: 0.78rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            text-decoration: none;
-            font-weight: 400;
-            transition: border-color 0.2s, color 0.2s, transform 0.15s;
-        }
-
-        .btn-ghost:hover {
-            border-color: rgba(232,230,224,0.5);
-            color: #e8e6e0;
-            transform: translateY(-1px);
-        }
-
-        /* ── Hero Image Column ── */
         .hero-img-col {
             position: relative;
-            min-height: calc(100vh - 68px);
+            height: calc(100vh - var(--header-h));
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: #0f0f17;
-            padding: 4rem 3rem;
+            background: var(--ink-3);
+            padding: 3rem 3rem 5rem;
+            overflow: hidden;
         }
 
-        /* The portrait is a cutout on a white card — treat it like a
-           mounted print: show the full image, add a gold hairline frame
-           offset around it, and a small caption underneath. */
         .portrait {
             position: relative;
-            width: min(78%, 400px);
+            flex: 0 1 auto;
+            max-height: calc(100% - 4rem);
+            display: flex;
         }
 
         .portrait::before {
             content: '';
             position: absolute;
             inset: -14px;
-            border: 0.5px solid rgba(201,169,110,0.55);
+            border: 0.5px solid rgba(201, 169, 110, 0.55);
             pointer-events: none;
         }
 
         .hero-img {
-            width: 100%;
+            max-width: min(100%, 380px);
+            max-height: 100%;
+            width: auto;
             height: auto;
             display: block;
-            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
         }
 
         .portrait-caption {
@@ -205,127 +93,104 @@
             font-size: 0.68rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(232,230,224,0.35);
-        }
-
-        .accent-line {
-            position: absolute;
-            top: 3rem;
-            right: 3rem;
-            width: 60px;
-            height: 0.5px;
-            background: #c9a96e;
-        }
-
-        .accent-dot {
-            position: absolute;
-            bottom: 3rem;
-            left: 3rem;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #c9a96e;
+            color: rgba(232, 230, 224, 0.35);
+            white-space: nowrap;
         }
 
         .scroll-hint {
             position: absolute;
-            bottom: 1.5rem;
+            bottom: 1rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
-            color: rgba(232,230,224,0.25);
-            font-size: 0.68rem;
+            gap: 0.4rem;
+            color: rgba(232, 230, 224, 0.3);
+            font-size: 0.65rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
         }
 
         .scroll-line {
             width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, rgba(201,169,110,0.6), transparent);
+            height: 28px;
+            background: linear-gradient(to bottom, rgba(201, 169, 110, 0.6), transparent);
             animation: scrollPulse 2s ease-in-out infinite;
         }
 
         @keyframes scrollPulse {
-            0%, 100% { opacity: 0.4; transform: scaleY(1); }
-            50% { opacity: 1; transform: scaleY(1.1); }
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scaleY(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scaleY(1.1);
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .scroll-line { animation: none; }
-            .fade-in { animation-duration: 0.01s; animation-delay: 0s; }
+            .scroll-line {
+                animation: none;
+            }
         }
 
-        /* ── Stats Bar ── */
         .stats-bar {
             display: flex;
             gap: 2.5rem;
             padding: 1.5rem 4rem;
-            border-top: 0.5px solid rgba(255,255,255,0.06);
-            border-bottom: 0.5px solid rgba(255,255,255,0.06);
-            background: #0d0d13;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+            background: var(--ink-2);
         }
 
-        .stat { display: flex; flex-direction: column; gap: 0.25rem; }
+        .stat {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
 
         .stat-num {
             font-family: 'DM Serif Display', serif;
             font-size: 1.6rem;
-            color: #c9a96e;
+            color: var(--gold);
         }
 
         .stat-label {
             font-size: 0.7rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: rgba(232,230,224,0.35);
+            color: rgba(232, 230, 224, 0.35);
         }
 
-        /* ── Fade-in animations ── */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(18px);
-            animation: fadeUp 0.7s ease forwards;
-        }
-        .fade-in:nth-child(1) { animation-delay: 0.1s; }
-        .fade-in:nth-child(2) { animation-delay: 0.25s; }
-        .fade-in:nth-child(3) { animation-delay: 0.4s; }
-        .fade-in:nth-child(4) { animation-delay: 0.55s; }
-        .fade-in:nth-child(5) { animation-delay: 0.7s; }
-        .fade-in:nth-child(6) { animation-delay: 0.85s; }
-
-        @keyframes fadeUp {
-            to { opacity: 1; transform: none; }
-        }
-
-        /* ── Responsive ── */
         @media (max-width: 768px) {
-            header {
-                padding: 1.2rem 1.5rem;
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            nav ul { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
-
             .hero {
                 grid-template-columns: 1fr;
-                min-height: unset;
+                height: auto;
             }
 
             .hero-img-col {
-                order: -1;              /* portrait first on mobile */
-                min-height: unset;
+                order: -1;
+                height: auto;
                 padding: 3rem 1.5rem 4.5rem;
             }
 
-            .portrait { width: min(70%, 320px); }
+            .portrait {
+                max-height: none;
+            }
 
-            .scroll-hint { display: none; }
-            .accent-line { top: 1.5rem; right: 1.5rem; }
-            .accent-dot { bottom: 1.5rem; left: 1.5rem; }
+            .hero-img {
+                max-width: min(75%, 320px);
+                margin: 0 auto;
+            }
+
+            .scroll-hint {
+                display: none;
+            }
 
             .hero-text-col {
                 padding: 3rem 1.5rem;
@@ -339,62 +204,64 @@
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <a href="index.html" class="logo-text">WR</a>
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about-me">About</a></li>
-            <li><a href="roadmap">Roadmap</a></li>
-            <li><a href="projects">Projects</a></li>
-            <li><a href="contact-me">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <a href="/" class="logo-text">WR</a>
+        <nav>
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/about-me">About</a></li>
+                <li><a href="/roadmap">Roadmap</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/contact-me">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section class="hero">
-    <div class="hero-text-col">
-        <p class="eyebrow fade-in">Software Engineer &amp; Web Developer</p>
-        <h1 class="hero-name fade-in">Wech<br><em>Ring</em></h1>
-        <div class="divider fade-in"></div>
-        <p class="tagline fade-in">Building thoughtful digital experiences — from clean architecture to polished interfaces.</p>
-        <div class="cta-row fade-in">
-            <a href="projects" class="btn-primary">View Projects</a>
-            <a href="contact-me" class="btn-ghost">Get in Touch</a>
+    <section class="hero">
+        <div class="hero-text-col">
+            <p class="eyebrow fade-in">Software Engineer &amp; Web Developer</p>
+            <h1 class="hero-name fade-in">Wech<br><em>Ring</em></h1>
+            <div class="divider fade-in"></div>
+            <p class="tagline fade-in">Building thoughtful digital experiences — from clean architecture to polished
+                interfaces.</p>
+            <div class="cta-row fade-in">
+                <a href="/projects" class="btn-primary">View Projects</a>
+                <a href="/contact-me" class="btn-ghost">Get in Touch</a>
+            </div>
+        </div>
+
+        <div class="hero-img-col">
+            <figure class="portrait fade-in">
+                <img src="/imgs/Portfolio1.png" alt="Wech Ring" class="hero-img">
+                <figcaption class="portrait-caption">Wech Ring · Est. 2023</figcaption>
+            </figure>
+            <div class="accent-line"></div>
+            <div class="accent-dot"></div>
+            <div class="scroll-hint">
+                <div class="scroll-line"></div>
+                <span>Scroll</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stat">
+            <span class="stat-num">3+</span>
+            <span class="stat-label">Years exp.</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num">10+</span>
+            <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num">Full</span>
+            <span class="stat-label">Stack</span>
         </div>
     </div>
-
-    <div class="hero-img-col">
-        <figure class="portrait fade-in">
-            <img src="imgs/Portfolio1.png" alt="Wech Ring" class="hero-img">
-            <figcaption class="portrait-caption">Wech Ring · Est. 2023</figcaption>
-        </figure>
-        <div class="accent-line"></div>
-        <div class="accent-dot"></div>
-        <div class="scroll-hint">
-            <div class="scroll-line"></div>
-            <span>Scroll</span>
-        </div>
-    </div>
-</section>
-
-<div class="stats-bar">
-    <div class="stat">
-        <span class="stat-num">3+</span>
-        <span class="stat-label">Years exp.</span>
-    </div>
-    <div class="stat">
-        <span class="stat-num">10+</span>
-        <span class="stat-label">Projects</span>
-    </div>
-    <div class="stat">
-        <span class="stat-num">Full</span>
-        <span class="stat-label">Stack</span>
-    </div>
-</div>
 
 </body>
-</html>
 
+</html>

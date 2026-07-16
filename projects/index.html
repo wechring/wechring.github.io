@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wech Ring • Projects</title>
+    <link rel="icon" type="image/jpeg" href="/imgs/Logo.jpeg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <style>
+        .page-header {
+            padding: 5rem 4rem 3rem;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .page-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--paper-bright);
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
+        }
+
+        .page-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .page-sub {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(232, 230, 224, 0.5);
+            max-width: 520px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        .project-card {
+            position: relative;
+            padding: 2.5rem;
+            border-right: 0.5px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+            background: var(--ink-2);
+            transition: background 0.2s;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .project-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .project-card:hover {
+            background: #111118;
+        }
+
+        .project-card:hover .card-num {
+            color: rgba(201, 169, 110, 0.3);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .project-card {
+                animation-duration: 0.01s;
+                animation-delay: 0s;
+            }
+        }
+
+        .card-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: rgba(201, 169, 110, 0.12);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            transition: color 0.25s;
+        }
+
+        .card-tag {
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .card-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            color: var(--paper-bright);
+            margin-bottom: 0.75rem;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: rgba(232, 230, 224, 0.55);
+            line-height: 1.75;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: auto;
+        }
+
+        .tech {
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            font-weight: 300;
+            color: rgba(232, 230, 224, 0.45);
+            border: 0.5px solid rgba(232, 230, 224, 0.12);
+            padding: 0.3rem 0.65rem;
+        }
+
+        .gh-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            padding: 3rem 4rem 4rem;
+        }
+
+        .back-link {
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(232, 230, 224, 0.4);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .gh-row {
+                padding: 2rem 1.5rem 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo-text">WR</a>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about-me">About</a></li>
+                <li><a href="/roadmap">Roadmap</a></li>
+                <li><a href="/projects" class="active">Projects</a></li>
+                <li><a href="/contact-me">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <p class="eyebrow">Portfolio</p>
+        <h1 class="page-title">My <em>Projects</em></h1>
+        <p class="page-sub">Selected work spanning full-stack platforms, research engineering, and applied AI.</p>
+    </div>
+
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="card-num">01</div>
+            <p class="card-tag">Full Stack</p>
+            <h3 class="card-title">Startup Collaboration Platform</h3>
+            <p class="card-desc">A platform where founders publish startup ideas, tag the technical roles they need, and
+                recruit collaborators through structured project listings — powered by a real-time social feed with
+                scalable backend data synchronization.</p>
+            <div class="card-tech">
+                <span class="tech">Next.js</span>
+                <span class="tech">TypeScript</span>
+                <span class="tech">Firebase</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="card-num">02</div>
+            <p class="card-tag">AI &amp; Data</p>
+            <h3 class="card-title">AI Trading Assistant</h3>
+            <p class="card-desc">An automated algorithmic trading bot that reads financial news through the FinBERT NLP
+                model, sizes positions with automated take-profit and stop-loss enforcement, and was backtested against
+                four years of historical market data.</p>
+            <div class="card-tech">
+                <span class="tech">Python</span>
+                <span class="tech">PyTorch</span>
+                <span class="tech">Lumibot</span>
+                <span class="tech">Alpaca API</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="card-num">03</div>
+            <p class="card-tag">Research Engineering</p>
+            <h3 class="card-title">Online Experiment Platform</h3>
+            <p class="card-desc">A Python web platform running multi-condition behavioral experiments end to end —
+                randomization engine, real-time data validation, and messaging — scaled to 1,000+ participants across
+                study phases at Johns Hopkins.</p>
+            <div class="card-tech">
+                <span class="tech">Python</span>
+                <span class="tech">oTree</span>
+                <span class="tech">SQLite</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="card-num">04</div>
+            <p class="card-tag">Web Dev</p>
+            <h3 class="card-title">Interactive Historical Timeline</h3>
+            <p class="card-desc">An educational web app spanning 400+ years of historical data, with a frontend
+                architecture and data models designed for dynamic rendering — built for the R-RIGHTS project at Johns
+                Hopkins.</p>
+            <div class="card-tech">
+                <span class="tech">JavaScript</span>
+                <span class="tech">HTML/CSS</span>
+                <span class="tech">Data Modeling</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="gh-row">
+        <a href="/" class="back-link">← Back to home</a>
+        <a href="https://github.com/wechring" class="btn-ghost">More on GitHub ↗</a>
+    </div>
+
+</body>
+
+</html>
