@@ -165,26 +165,47 @@
         /* ── Hero Image Column ── */
         .hero-img-col {
             position: relative;
-            height: calc(100vh - 68px);
-            overflow: hidden;
-            background: #0f0f17;
-        }
-
-        .img-frame {
-            position: absolute;
-            inset: 0;
+            min-height: calc(100vh - 68px);
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #0f0f17;
+            padding: 4rem 3rem;
+        }
+
+        /* The portrait is a cutout on a white card — treat it like a
+           mounted print: show the full image, add a gold hairline frame
+           offset around it, and a small caption underneath. */
+        .portrait {
+            position: relative;
+            width: min(78%, 400px);
+        }
+
+        .portrait::before {
+            content: '';
+            position: absolute;
+            inset: -14px;
+            border: 0.5px solid rgba(201,169,110,0.55);
+            pointer-events: none;
         }
 
         .hero-img {
-            width: 75%;
-            max-width: 360px;
-            aspect-ratio: 3/4;
-            object-fit: cover;
+            width: 100%;
+            height: auto;
             display: block;
-            border: 0.5px solid rgba(255,255,255,0.06);
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7);
+        }
+
+        .portrait-caption {
+            position: absolute;
+            top: calc(100% + 1.6rem);
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(232,230,224,0.35);
         }
 
         .accent-line {
@@ -208,7 +229,7 @@
 
         .scroll-hint {
             position: absolute;
-            bottom: 2rem;
+            bottom: 1.5rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -231,6 +252,11 @@
         @keyframes scrollPulse {
             0%, 100% { opacity: 0.4; transform: scaleY(1); }
             50% { opacity: 1; transform: scaleY(1.1); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-line { animation: none; }
+            .fade-in { animation-duration: 0.01s; animation-delay: 0s; }
         }
 
         /* ── Stats Bar ── */
@@ -277,8 +303,12 @@
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
-            header { padding: 1.2rem 1.5rem; }
-            nav ul { gap: 1.2rem; }
+            header {
+                padding: 1.2rem 1.5rem;
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            nav ul { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
 
             .hero {
                 grid-template-columns: 1fr;
@@ -286,9 +316,16 @@
             }
 
             .hero-img-col {
-                height: 60vw;
-                min-height: 280px;
+                order: -1;              /* portrait first on mobile */
+                min-height: unset;
+                padding: 3rem 1.5rem 4.5rem;
             }
+
+            .portrait { width: min(70%, 320px); }
+
+            .scroll-hint { display: none; }
+            .accent-line { top: 1.5rem; right: 1.5rem; }
+            .accent-dot { bottom: 1.5rem; left: 1.5rem; }
 
             .hero-text-col {
                 padding: 3rem 1.5rem;
@@ -305,14 +342,14 @@
 <body>
 
 <header>
-    <a href="http://wechring.github.io" class="logo-text">WR</a>
+    <a href="index.html" class="logo-text">WR</a>
     <nav>
         <ul>
-            <li><a href="http://wechring.github.io" class="active">Home</a></li>
-            <li><a href="http://wechring.github.io/about-me">About</a></li>
-            <li><a href="http://wechring.github.io/roadmap">Roadmap</a></li>
-            <li><a href="http://wechring.github.io/projects">Projects</a></li>
-            <li><a href="http://wechring.github.io/contact-me">Contact</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about-me">About</a></li>
+            <li><a href="roadmap">Roadmap</a></li>
+            <li><a href="projects">Projects</a></li>
+            <li><a href="contact-me">Contact</a></li>
         </ul>
     </nav>
 </header>
@@ -324,15 +361,16 @@
         <div class="divider fade-in"></div>
         <p class="tagline fade-in">Building thoughtful digital experiences — from clean architecture to polished interfaces.</p>
         <div class="cta-row fade-in">
-            <a href="http://wechring.github.io/projects" class="btn-primary">View Projects</a>
-            <a href="http://wechring.github.io/contact-me" class="btn-ghost">Get in Touch</a>
+            <a href="projects" class="btn-primary">View Projects</a>
+            <a href="contact-me" class="btn-ghost">Get in Touch</a>
         </div>
     </div>
 
     <div class="hero-img-col">
-        <div class="img-frame">
+        <figure class="portrait fade-in">
             <img src="imgs/Portfolio1.png" alt="Wech Ring" class="hero-img">
-        </div>
+            <figcaption class="portrait-caption">Wech Ring · Est. 2023</figcaption>
+        </figure>
         <div class="accent-line"></div>
         <div class="accent-dot"></div>
         <div class="scroll-hint">
@@ -359,3 +397,4 @@
 
 </body>
 </html>
+
